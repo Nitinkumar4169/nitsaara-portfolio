@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %} Services {% endblock title %}
+
+{% block body %}
+
+<!-- Hero Section -->
+<section class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-5 fw-bold">Our Services</h1>
+        <p class="lead mb-0">
+            Scalable, Secure & Intelligent Digital Solutions
+        </p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Service 1 -->
+            <div class="col-md-4">
+                <div class="card shadow h-100 border-0 text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-code-slash fs-1 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">Web Development</h5>
+                    <p class="text-muted">
+                        Custom Django-based web applications with secure backend and responsive UI.
+                    </p>
+                    <a href="#" class="btn btn-outline-primary mt-auto">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-md-4">
+                <div class="card shadow h-100 border-0 text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-cpu fs-1 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">AI & Data Solutions</h5>
+                    <p class="text-muted">
+                        Machine Learning, AI supervision systems, and data-driven business insights.
+                    </p>
+                    <a href="#" class="btn btn-outline-primary mt-auto">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-md-4">
+                <div class="card shadow h-100 border-0 text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi bi-cloud fs-1 text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold">DevOps & Deployment</h5>
+                    <p class="text-muted">
+                        CI/CD pipelines, Docker setup, cloud deployment, and production optimization.
+                    </p>
+                    <a href="#" class="btn btn-outline-primary mt-auto">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Why Choose Us?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h5>🚀 Scalable Architecture</h5>
+                <p class="text-muted">Built to handle future growth and high performance.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>🔐 Secure Solutions</h5>
+                <p class="text-muted">Industry-level security best practices implemented.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>⚡ Fast Delivery</h5>
+                <p class="text-muted">Agile development approach for faster turnaround.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Our Process</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <h6>1. Requirement Analysis</h6>
+            </div>
+            <div class="col-md-3">
+                <h6>2. Planning & Design</h6>
+            </div>
+            <div class="col-md-3">
+                <h6>3. Development</h6>
+            </div>
+            <div class="col-md-3">
+                <h6>4. Deployment & Support</h6>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call To Action -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h2 class="fw-bold">Ready to Start Your Project?</h2>
+        <a href="/contact" class="btn btn-light btn-lg mt-3">
+            Contact Us
+        </a>
+    </div>
+</section>
+
+{% endblock body %}

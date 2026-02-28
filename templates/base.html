@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  {% comment %} <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+
+    <title>{% block title %} {% endblock title %} | The Nitsaara Bonded</title>
+  </head> {% endcomment %}
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <title>{% block title %}{% endblock %} | Nitsaara Bonded</title>
+
+  <style>
+
+    /* GLOBAL */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8fafc;
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #0f172a !important;
+      padding: 15px 20px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    {% comment %} .logo {
+      background: linear-gradient(45deg, #2563eb, #0ea5e9);
+      padding: 6px 14px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    } {% endcomment %}
+
+    .nav-link {
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #0ea5e9 !important;
+    }
+
+    /* HERO SECTION SUPPORT */
+    .hero-section {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      padding: 120px 0;
+    }
+
+    /* PROFILE IMAGE */
+    .profile-img {
+      width: 280px;
+      border-radius: 20px;
+      border: 4px solid #2563eb;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* CARDS */
+    .card {
+      transition: 0.3s ease;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      background: #2563eb;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    /* SOCIAL LINKS (For Hero Section) */
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+      font-size: 20px;
+      color: white;
+      background: #1e293b;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #2563eb;
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* ALERT MESSAGES */
+    .alert {
+      border-radius: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      color: #0ea5e9;
+    }
+
+  </style>
+</head>   
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><span class="logo">Nitsaara Bonded 💎 </span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/services">Services</a>
+            </li>
+            {% comment %} <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="/services"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/services">Icecream</a></li>
+                <li><a class="dropdown-item" href="#">Softy</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Family Pack</a></li>
+              </ul>
+            </li> {% endcomment %}
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact us</a>
+            </li>
+          </ul>
+          {% comment %} <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form> {% endcomment %}
+        </div>
+      </div>
+    </nav>
+  
+
+ 
+    
+   
+
+
+{%if messages%}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{%endif%}
+
+    {% block body %} {% endblock body %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    -->
+  </body>
+  
+</html>
+
