@@ -78,7 +78,7 @@ def contact(request):
         send_mail(
     subject,
     message,
-    settings.EMAIL_HOST_USER,   # From
+    settings.DEFAULT_FROM_EMAIL,   # From
     ['nitinoffc2004@gmail.com'], # To
     fail_silently=False,
 )
