@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -29,7 +30,11 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'unsafe-development-key')
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
 # allow requests from anywhere while deploying; tighten for production
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = os.getenv(
+    'ALLOWED_HOSTS',
+    'nitsaara-portfolio.onrender.com,localhost,127.0.0.1'
+).split(',')
 
 
 # Application definition
@@ -77,13 +82,20 @@ WSGI_APPLICATION = 'Hello.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ.get("DATABASE_URL"):
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
