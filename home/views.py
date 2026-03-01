@@ -43,79 +43,47 @@ def services(request):
 
 
 def contact(request):
+    """Handle contact form submissions and render the page.
+
+    When the request is POST the data is saved to the database and an
+    email notification is sent using the configured SMTP settings.  The
+    user is redirected back to the contact page with a success message to
+    avoid duplicate submissions.
+    """
+
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         desc = request.POST.get('desc')
 
-        # Save to DB
+        # persist contact record
         Contact.objects.create(
             name=name,
             email=email,
             phone=phone,
-            desc=desc
+            desc=desc,
         )
 
-        # Send Email to You
+        # send notification email
         subject = f"New Contact Message from {name}"
-        message = f"""
-Name: {name}
-Email: {email}
-Phone: {phone}
-
-Message:
-{desc}
-        """
+        message = (
+            f"You have received a new message from your website:\n\n"
+            f"Name: {name}\n"
+            f"Email: {email}\n"
+            f"Phone: {phone}\n\n"
+            f"Message:\n{desc}"
+        )
 
         send_mail(
-            subject,
-            message,
-            settings.EMAIL_HOST_USER,
-            ['nitinoffc2004@gmail.com'],
-            fail_silently=False,
-        )
-
-        return redirect('contact')
-
-    return render(request, 'contact.html')
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        desc = request.POST.get('desc')
-
-        # Save to Database
-        Contact.objects.create(
-            name=name,
-            email=email,
-            phone=phone,
-            desc=desc
-        )
-
-        # Send Email Notification to You
-        subject = f"New Contact Message from {name}"
-        message = f"""
-You have received a new message from your website:
-
-Name: {name}
-Email: {email}
-Phone: {phone}
-
-Message:
-{desc}
-        """
-
-        send_mail(
-            subject,
-            message,
-            settings.EMAIL_HOST_USER,
-            ['nitinoffc2004@gmail.com'],  # your email
-            fail_silently=False,
-        )
+    subject,
+    message,
+    settings.EMAIL_HOST_USER,   # From
+    ['nitinoffc2004@gmail.com'], # To
+    fail_silently=False,
+)
 
         messages.success(request, "Your message has been sent successfully!")
-
-        return redirect('contact')  # Prevent duplicate submission
+        return redirect('contact')
 
     return render(request, 'contact.html')    

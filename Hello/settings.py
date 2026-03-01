@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -17,16 +18,18 @@ from django.contrib.messages import constants as messages
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# ----------------------------------
+# security / environment switches
+# ----------------------------------
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8)8q+6skx)j0c5n$jpmttgp0#cc1nz=&s4_to6x+)r76ce@1#h'
+# keep secret key out of source control
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'unsafe-development-key')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# debug controlled by environment variable (Render sets this to False by default)
+DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['*']
+# allow requests from anywhere while deploying; tighten for production
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 
 # Application definition
@@ -117,23 +120,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-#Added manually
+# where collectstatic will gather files
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# additional locations the staticfiles app should search
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    #"/var/www/static/",
+    BASE_DIR / 'static',
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# whitenoise storage backend compresses and creates unique names
+STATICFILES_STORAGE = (
+    'whitenoise.storage.CompressedManifestStaticFilesStorage'
+)
 # ==============================
-# EMAIL CONFIGURATION (GMAIL)
+# EMAIL CONFIGURATION
 # ==============================
+# credentials and other options are pulled from environment variables
+# so that they can be configured securely on Render or any host.
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() in ('true', '1', 'yes')
 
-EMAIL_HOST_USER = 'nitinoffc2004@gmail.com'
-EMAIL_HOST_PASSWORD = 'uiagxhjrbctnbnqo'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
