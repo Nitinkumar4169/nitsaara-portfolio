@@ -35,30 +35,7 @@ Frontend
 
 - Render (Production hosting)
 
-** Folder Structure
 
-Hello/
-│
-├── Hello/                 # Main Django project
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── home/                  # Django app
-│
-├── templates/             # HTML templates
-│
-├── static/                # Static files
-│   └── img/               # Images
-│
-├── staticfiles/           # Collected static files (production)
-│
-├── manage.py
-├── requirements.txt
-├── Procfile
-└── db.sqlite3 (local development)
 
 ⚙️ Installation & Setup
 
